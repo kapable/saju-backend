@@ -1,0 +1,6 @@
+node_modules
+.env
+mysql-apt-config*.*
+mysql-apt-config*.*.*
+out
+.DS_Store
