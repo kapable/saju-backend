@@ -8,6 +8,8 @@ const hpp = require('hpp');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
+const todayRouter = require('./routes/today');
+
 dotenv.config();
 
 const app = express();
@@ -59,6 +61,8 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/', (req, res) => {
     res.send('Welcome to SAJU API!');
 });
+
+app.use('/today', todayRouter);
 
 app.listen(3065, () => {
     console.log('-- SAJU API is listening on http://localhost:3065 --');
