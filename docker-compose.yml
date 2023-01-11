@@ -1,0 +1,19 @@
+version: '3'
+services:
+  backend:
+    image: cookierocket/saju-backend
+    environment:
+      RDS_USERNAME: ${RDS_USERNAME}
+      RDS_HOST: ${RDS_HOST}
+      RDS_PASSWORD: ${RDS_PASSWORD}
+      RDS_DATABASE: ${RDS_DATABASE}
+      RDS_PORT: ${RDS_PORT}
+      COOKIE_SECRET: ${COOKIE_SECRET}
+      SERVICE_FRONT_URL: ${SERVICE_FRONT_URL}
+    container_name: "saju-backend"
+    restart: "always"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3065:3065"
