@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-// const db = require('./models');
+const db = require('./models');
 const morgan = require('morgan');
 const session = require('express-session');
 const helmet = require('helmet');
@@ -13,11 +13,11 @@ const todayRouter = require('./routes/today');
 dotenv.config();
 
 const app = express();
-// db.sequelize.sync({ alter: true })
-//     .then(() => {
-//         console.log('DB Connected...');
-//     })
-//     .catch(console.error);
+db.sequelize.sync({ alter: true })
+    .then(() => {
+        console.log('DB Connected...');
+    })
+    .catch(console.error);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
