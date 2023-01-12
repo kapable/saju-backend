@@ -31,11 +31,7 @@ module.exports = class Mansedata extends Model {
             no: {
                 type: DataTypes.CHAR(8),
                 allowNull: false,
-            },
-            number: {
-                type: DataTypes.INTEGER,
-                primaryKey: 'number',
-                autoIncrement: true,
+                primaryKey: 'no',
             },
             umdate: {
                 type: DataTypes.CHAR(8),
