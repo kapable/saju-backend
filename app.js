@@ -23,10 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(cors({
-        origin: [process.env.SERVICE_FRONT_URL, process.env.SERVICE_FRONT_URL2],
-        credentials: true,
-    }));
+    app.use(cors());
 
     app.enable('trust proxy');
     app.use(morgan('combined'));
