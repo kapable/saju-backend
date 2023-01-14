@@ -13,6 +13,8 @@ const todayRouter = require('./routes/today');
 dotenv.config();
 
 const app = express();
+app.use(cors())
+
 db.sequelize.sync({ alter: true })
     .then(() => {
         console.log('DB Connected...');
@@ -22,38 +24,41 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(cors());
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(cors({
+//         origin: [process.env.SERVICE_FRONT_URL, process.env.SERVICE_FRONT_URL2],
+//         credentials: true,
+//     }));
 
-    app.enable('trust proxy');
-    app.use(morgan('combined'));
-    app.use(helmet({ contentSecurityPolicy: false }));
-    app.use(hpp());
+//     app.enable('trust proxy');
+//     app.use(morgan('combined'));
+//     app.use(helmet({ contentSecurityPolicy: false }));
+//     app.use(hpp());
 
-    app.use(session({
-        saveUninitialized: false,
-        resave: false,
-        secret: process.env.COOKIE_SECRET,
-        proxy: true,
-        cookie: {
-            httpOnly: true,
-            secure: true,
-            domain: '.ktestone.com'
-        }
-    }));
-} else {
-    app.use(cors({
-        origin: [process.env.DEV_FRONT_URL],
-        credentials: true,
-    }));
-    app.use(morgan('dev'));
+//     app.use(session({
+//         saveUninitialized: false,
+//         resave: false,
+//         secret: process.env.COOKIE_SECRET,
+//         proxy: true,
+//         cookie: {
+//             httpOnly: true,
+//             secure: true,
+//             domain: '.ktestone.com'
+//         }
+//     }));
+// } else {
+//     app.use(cors({
+//         origin: [process.env.DEV_FRONT_URL],
+//         credentials: true,
+//     }));
+//     app.use(morgan('dev'));
 
-    app.use(session({
-        saveUninitialized: false,
-        resave: false,
-        secret: process.env.COOKIE_SECRET,
-    }));
-}
+//     app.use(session({
+//         saveUninitialized: false,
+//         resave: false,
+//         secret: process.env.COOKIE_SECRET,
+//     }));
+// }
 
 app.get('/', (req, res) => {
     res.send('Welcome to SAJU API!');
