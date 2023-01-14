@@ -24,8 +24,8 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 if (process.env.NODE_ENV === 'production') {
     app.use(cors({
-        // origin: [process.env.SERVICE_FRONT_URL,],
-        // credentials: true,
+        origin: [process.env.SERVICE_FRONT_URL, process.env.SERVICE_FRONT_URL2],
+        credentials: true,
     }));
 
     app.enable('trust proxy');
