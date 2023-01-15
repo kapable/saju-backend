@@ -39,17 +39,17 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
     app.use(helmet({ contentSecurityPolicy: false }));
     app.use(hpp());
 
-//     app.use(session({
-//         saveUninitialized: false,
-//         resave: false,
-//         secret: process.env.COOKIE_SECRET,
-//         proxy: true,
-//         cookie: {
-//             httpOnly: true,
-//             secure: true,
-//             domain: '.ktestone.com'
-//         }
-//     }));
+    app.use(session({
+        saveUninitialized: false,
+        resave: false,
+        secret: process.env.COOKIE_SECRET,
+        proxy: true,
+        cookie: {
+            httpOnly: true,
+            secure: true,
+            domain: '.ktestone.com'
+        }
+    }));
 // } else {
 //     app.use(cors({
 //         origin: [process.env.DEV_FRONT_URL],
