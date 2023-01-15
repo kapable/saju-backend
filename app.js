@@ -34,10 +34,10 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 //         optionsSuccessStatus: 200
 //     }));
 
-//     app.enable('trust proxy');
-//     app.use(morgan('combined'));
-//     app.use(helmet({ contentSecurityPolicy: false }));
-//     app.use(hpp());
+    app.enable('trust proxy');
+    app.use(morgan('combined'));
+    app.use(helmet({ contentSecurityPolicy: false }));
+    app.use(hpp());
 
 //     app.use(session({
 //         saveUninitialized: false,
