@@ -18,13 +18,14 @@ db.sequelize.sync({ alter: true })
         console.log('DB Connected...');
     })
     .catch(console.error);
-app.use(cors())
+app.use(cors({
+    origin: [process.env.SERVICE_FRONT_URL, process.env.SERVICE_FRONT_URL2],
+    credentials: true,
+    optionsSuccessStatus: 200
+}))
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-// app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // if (process.env.NODE_ENV === 'production') {
 //     app.use(cors({
@@ -49,9 +50,6 @@ app.use(cookieParser());
 //             domain: '.ktestone.com'
 //         }
 //     }));
-//     app.get('/', (req, res) => {
-//         res.send('Welcome to SAJU API!');
-//     });
 // } else {
 //     app.use(cors({
 //         origin: [process.env.DEV_FRONT_URL],
@@ -64,10 +62,11 @@ app.use(cookieParser());
 //         resave: false,
 //         secret: process.env.COOKIE_SECRET,
 //     }));
-//     app.get('/', (req, res) => {
-//         res.send('Welcome to SAJU DEV API!');
-//     });
 // }
+
+app.get('/', (req, res) => {
+    res.send('Welcome to SAJU API!');
+});
 
 app.use('/today', todayRouter);
 
