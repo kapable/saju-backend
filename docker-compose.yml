@@ -2,6 +2,11 @@ version: '3'
 services:
   backend:
     image: cookierocket/saju-backend
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "1"
+        max-size: "100m"
     environment:
       RDS_USERNAME: ${RDS_USERNAME}
       RDS_HOST: ${RDS_HOST}

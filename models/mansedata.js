@@ -65,6 +65,14 @@ module.exports = class Mansedata extends Model {
                 type: DataTypes.CHAR(1),
                 allowNull: true,
             },
+            createdAt: {
+                allowNull: true,
+                type: DataTypes.DATE
+            },
+            updatedAt: {
+                allowNull: true,
+                type: DataTypes.DATE
+            }
         }, {
             modelName: 'Mansedata',
             tableName: 'mansedatas',
