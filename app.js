@@ -61,7 +61,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('/', (req, res) => {
-    res.send('Welcome to SAJU API!');
+    res.send('Welcome to ktest SAJU API!');
 });
 
 app.use('/today', todayRouter);
