@@ -63,7 +63,7 @@ jobs:
           docker run -d -p 3065:3065 --name go_cicd --env-file /home/ubuntu/.env --restart always ${{ env.DOCKER_IMAGE }}:latest
       # CloudFront 무효화
       - name: Invalidate CloudFront
-        uses: chetan/invalidate-cloudfront-action@v2
+        uses: chetan/invalidate-cloudfront-action@v1
         env:
           DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
           PATHS: "/*"
