@@ -21,7 +21,7 @@ const toStringByFormatting = (source, delimiter = '') => {
 router.get('/total', async(req, res, next) => {
     try {
         const todayFormatted = toStringByFormatting(new Date());
-        const day_info = Mansedata.findOne({
+        const day_info = await Mansedata.findOne({
             where: { no: todayFormatted }
         })
         res.status(200).json(day_info);
