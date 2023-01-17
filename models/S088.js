@@ -1,7 +1,7 @@
 const DataTypes = require('sequelize');
 const { Model } = DataTypes;
 
-module.exports = class S087 extends Model {
+module.exports = class S088 extends Model {
     static init(sequelize) {
         return super.init({ 
             DB_check: {
@@ -29,8 +29,8 @@ module.exports = class S087 extends Model {
                 type: DataTypes.DATE
             }
         }, {
-            modelName: 'S087',
-            tableName: 'S087',
+            modelName: 'S088',
+            tableName: 'S088',
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
             sequelize

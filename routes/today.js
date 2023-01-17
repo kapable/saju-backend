@@ -1,22 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { Op, where } = require('sequelize');
-const { Mansedata, S087 } = require('../models');
-
-const leftPad = (value) => {
-    if (value >= 10) {
-        return value;
-    }
-    return `0${value}`;
-};
-
-const toStringByFormatting = (source, delimiter = '') => {
-    const year = source.getFullYear();
-    const month = leftPad(source.getMonth() + 1);
-    const day = leftPad(source.getDate());
-
-    return [year, month, day].join(delimiter);
-};
+const { Mansedata, S087, S088 } = require('../models');
+const { toStringByFormatting,
+        gabja_alphabet_converter,
+        gabja_number_converter,
+    } = require('../tools');
 
 router.get('/total/:birthDate', async(req, res, next) => {
     try {
@@ -32,53 +20,10 @@ router.get('/total/:birthDate', async(req, res, next) => {
         let my_day_h = birtday_info?.day_h;
         let my_day_e = birtday_info?.day_e;
 
-        if (today_h == 'A') {today_h = '甲';}
-        if (today_h == 'B') {today_h = '乙';}
-        if (today_h == 'C') {today_h = '丙';}
-        if (today_h == 'D') {today_h = '丁';}
-        if (today_h == 'E') {today_h = '戊';}
-        if (today_h == 'F') {today_h = '己';}
-        if (today_h == 'G') {today_h = '庚';}
-        if (today_h == 'H') {today_h = '辛';}
-        if (today_h == 'I') {today_h = '壬';}
-        if (today_h == 'J') {today_h = '癸';}
-
-        if (today_e == '11') {today_e = '子';}
-        if (today_e == '12') {today_e = '丑';}
-        if (today_e == '01') {today_e = '寅';}
-        if (today_e == '02') {today_e = '卯';}
-        if (today_e == '03') {today_e = '辰';}
-        if (today_e == '04') {today_e = '巳';}
-        if (today_e == '05') {today_e = '午';}
-        if (today_e == '06') {today_e = '未';}
-        if (today_e == '07') {today_e = '申';}
-        if (today_e == '08') {today_e = '酉';}
-        if (today_e == '09') {today_e = '戌';}
-        if (today_e == '10') {today_e = '亥';}
-
-        if (my_day_h == 'A') {my_day_h = '甲';}
-        if (my_day_h == 'B') {my_day_h = '乙';}
-        if (my_day_h == 'C') {my_day_h = '丙';}
-        if (my_day_h == 'D') {my_day_h = '丁';}
-        if (my_day_h == 'E') {my_day_h = '戊';}
-        if (my_day_h == 'F') {my_day_h = '己';}
-        if (my_day_h == 'G') {my_day_h = '庚';}
-        if (my_day_h == 'H') {my_day_h = '辛';}
-        if (my_day_h == 'I') {my_day_h = '壬';}
-        if (my_day_h == 'J') {my_day_h = '癸';}
-
-        if (my_day_e == '11') {my_day_e = '子';}
-        if (my_day_e == '12') {my_day_e = '丑';}
-        if (my_day_e == '01') {my_day_e = '寅';}
-        if (my_day_e == '02') {my_day_e = '卯';}
-        if (my_day_e == '03') {my_day_e = '辰';}
-        if (my_day_e == '04') {my_day_e = '巳';}
-        if (my_day_e == '05') {my_day_e = '午';}
-        if (my_day_e == '06') {my_day_e = '未';}
-        if (my_day_e == '07') {my_day_e = '申';}
-        if (my_day_e == '08') {my_day_e = '酉';}
-        if (my_day_e == '09') {my_day_e = '戌';}
-        if (my_day_e == '10') {my_day_e = '亥';}
+        today_h = gabja_alphabet_converter(today_h);
+        today_e = gabja_number_converter(today_e);
+        my_day_h = gabja_alphabet_converter(my_day_h);
+        my_day_e = gabja_number_converter(my_day_e);
         
         const today_he = today_h + today_e;
         const my_day_he = my_day_h + my_day_e;
