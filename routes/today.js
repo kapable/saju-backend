@@ -5,15 +5,21 @@ const { toStringByFormatting,
         gabja_alphabet_converter,
         gabja_number_converter,
     } = require('../tools');
+const crypto = require('crypto-js');
 
-router.get('/total/:birthDate', async(req, res, next) => {
+router.get('/total/:queryDate', async(req, res, next) => {
     try {
-        const todayFormatted = toStringByFormatting(new Date());
+        // get dates from front-end
+        const bytes = crypto.AES.decrypt(decodeURIComponent(req.params.queryDate), 'ktestsaju');
+        const decrypted = JSON.parse(bytes.toString(crypto.enc.Utf8));
+        const date_candidates = decrypted.split('-'); // e.g. [ '20230117', '20170102' ]
+
+        // date - gabja matching logic start
         const today_info = await Mansedata.findOne({
-            where: { no: todayFormatted }
+            where: { no: date_candidates[0] } // today
         });
         const birtday_info = await Mansedata.findOne({
-            where: { no: req.params.birthDate }
+            where: { no: date_candidates[1] } // birthday
         })
         let today_h = today_info?.day_h;
         let today_e = today_info?.day_e;
@@ -77,7 +83,6 @@ router.get('/total/:birthDate', async(req, res, next) => {
             where: { DB_express: total_index },
             attributes: ['DB_data'],
         });
-
 
         res.status(200).json({ total_result: total_result.DB_data, love_result: love_result.DB_data, wish_result: wish_result.DB_data, biz_result: biz_result.DB_data, direction_result: direction_result.DB_data, wealth_result: wealth_result.DB_data });
     } catch (error) {

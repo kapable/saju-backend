@@ -45,7 +45,7 @@ const gabja_number_converter = (num) => {
         { nums: '10', gabja:'亥' },
     ];
     return gabja_number_index_array.find((idx) => idx.nums === num).gabja;
-}
+};
 
 module.exports = {
     toStringByFormatting,
