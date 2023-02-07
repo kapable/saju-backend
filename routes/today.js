@@ -19,7 +19,7 @@ router.get('/total/:queryDate', async(req, res, next) => {
         });
         const birtday_info = await Mansedata.findOne({
             where: { no: date_candidates[1] } // birthday
-        })
+        });
         let today_h = today_info?.day_h;
         let today_e = today_info?.day_e;
         let my_day_h = birtday_info?.day_h;
