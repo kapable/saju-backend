@@ -1,18 +1,3 @@
-const leftPad = (value) => {
-    if (value >= 10) {
-        return value;
-    }
-    return `0${value}`;
-};
-
-const toStringByFormatting = (source, delimiter = '') => {
-    const year = source.getFullYear();
-    const month = leftPad(source.getMonth() + 1);
-    const day = leftPad(source.getDate());
-
-    return [year, month, day].join(delimiter);
-};
-
 const gabja_alphabet_converter = (char) => {
     const gabja_alphabet_index_array = [
         { alphabet: 'A', gabja: '甲' },
@@ -48,7 +33,6 @@ const gabja_number_converter = (num) => {
 };
 
 module.exports = {
-    toStringByFormatting,
     gabja_alphabet_converter,
     gabja_number_converter,
 };
