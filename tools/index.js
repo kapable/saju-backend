@@ -32,6 +32,11 @@ const gabja_number_converter = (num) => {
     return gabja_number_index_array.find((idx) => idx.nums === num).gabja;
 };
 
+const F_re_yukchin = (a, b, ilgan) => {
+
+    return;
+};
+
 module.exports = {
     gabja_alphabet_converter,
     gabja_number_converter,
