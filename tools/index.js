@@ -132,9 +132,42 @@ const F_mb_sibsin = (mb_sibsin_var) => {
     return mb_sibsin;
 };
 
+const save_wealth_logic = (request_month, request_day) => {
+    let serial_no = 0;
+
+    if(request_month == "12" && request_day > 23 || request_month == "01" && request_day < 21){
+        serial_no= 12;
+    }else if(request_month == "01" && request_day > 20 || request_month == "02" && request_day < 20){
+        serial_no=1;
+    }else if(request_month == "02" && request_day > 19 || request_month == "03" && request_day < 21){
+        serial_no=2;
+    }else if(request_month == "03" && request_day > 20 || request_month == "04" && request_day < 21){
+        serial_no=3;
+    }else if(request_month == "04" && request_day > 20 || request_month == "05" && request_day < 22){
+        serial_no=4;
+    }else if(request_month == "05" && request_day > 21 || request_month == "06" && request_day < 22){
+        serial_no=5;
+    }else if(request_month == "06" && request_day > 21 || request_month == "07" && request_day < 24){
+        serial_no=6;
+    }else if(request_month == "07" && request_day > 23 || request_month == "08" && request_day < 24){
+        serial_no=7;
+    }else if(request_month == "08" && request_day > 23 || request_month == "09" && request_day < 24){
+        serial_no=8;
+    }else if(request_month == "09" && request_day > 23 || request_month == "10" && request_day < 24){
+        serial_no=9;
+    }else if(request_month == "10" && request_day > 23 || request_month == "11" && request_day < 23){
+        serial_no=10;
+    }else{
+        serial_no=11;
+    }
+
+    return serial_no;
+}
+
 module.exports = {
     gabja_alphabet_converter,
     gabja_number_converter,
     F_re_yukchin,
     F_mb_sibsin,
+    save_wealth_logic,
 };
