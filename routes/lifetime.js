@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Mansedata, S022, S064, S065, S066, S027, S116, S117, S028 } = require('../models');
-const { gabja_alphabet_converter,
-        gabja_number_converter,
+const { F_re_yukchin, gabja_alphabet_converter, F_mb_sibsin,
     } = require('../tools');
 const crypto = require('crypto-js');
 
@@ -16,6 +15,8 @@ router.get('/total/:queryDate', async(req, res, next) => {
         });
         let my_year_h_org = birtday_info?.year_h;
         let my_year_e_org = birtday_info?.year_e;
+        let my_month_h_org = birtday_info?.month_h;
+        let my_month_e_org = birtday_info?.month_e;
         let my_day_h_org = birtday_info?.day_h;
         let my_day_e_org = birtday_info?.day_e;
 
@@ -43,7 +44,16 @@ router.get('/total/:queryDate', async(req, res, next) => {
             attributes: ['DB_data'],
         });
 
-        res.status(200).json({ total_saju: total_saju.DB_data, health_saju: health_saju.DB_data, chracter_saju: chracter_saju.DB_data, job_saju: job_saju.DB_data });
+        // wealth Luck
+        const mb_sibsin = F_re_yukchin(my_month_e_org, 12, gabja_alphabet_converter(my_day_h_org));
+        const serial_no = F_mb_sibsin(mb_sibsin);
+        const wealth_luck = await S027.findOne({
+            where: { DB_express: serial_no },
+            attributes: ['DB_data'],
+        });
+
+
+        res.status(200).json({ total_saju: total_saju.DB_data, health_saju: health_saju.DB_data, chracter_saju: chracter_saju.DB_data, job_saju: job_saju.DB_data, wealth_luck: wealth_luck.DB_data });
     } catch (error) {
         console.error(error);
         next(error);
