@@ -8,14 +8,12 @@ const crypto = require('crypto-js');
 router.get('/total/:queryDate', async(req, res, next) => {
     try {
         // get birthday from front-end
-        // const bytes = crypto.AES.decrypt(decodeURIComponent(req.params.queryDate), 'ktestsaju');
-        // const decryptedDate = JSON.parse(bytes.toString(crypto.enc.Utf8));
+        const bytes = crypto.AES.decrypt(decodeURIComponent(req.params.queryDate), 'ktestsaju');
+        const decryptedDate = JSON.parse(bytes.toString(crypto.enc.Utf8));
         const birtday_info = await Mansedata.findOne({
-            where: { no: req.params.queryDate } // birthday
+            where: { no: decryptedDate } // birthday
         });
-        let my_year_h_org = birtday_info?.year_h;
         let my_year_e_org = birtday_info?.year_e;
-        let my_month_h_org = birtday_info?.month_h;
         let my_month_e_org = birtday_info?.month_e;
         let my_day_h_org = birtday_info?.day_h;
         let my_day_e_org = birtday_info?.day_e;
@@ -53,7 +51,7 @@ router.get('/total/:queryDate', async(req, res, next) => {
         });
 
         // save wealth
-        const wealth_serial_no = save_wealth_logic(req.params.queryDate.slice(4,6), parseInt(req.params.queryDate.slice(6,8), 10));
+        const wealth_serial_no = save_wealth_logic(decryptedDate.slice(4,6), parseInt(decryptedDate.slice(6,8), 10));
         const save_wealth = await S116.findOne({
             where: { DB_express: wealth_serial_no },
             attributes: ['DB_data'],
