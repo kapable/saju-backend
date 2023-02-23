@@ -7,8 +7,10 @@ const { mid_life_converter } = require('../tools');
 router.get('/total/:queryDate', async(req, res, next) => {
     try {
         // get birthday from front-end
+        const bytes = crypto.AES.decrypt(decodeURIComponent(req.params.queryDate), 'ktestsaju');
+        const decryptedDate = JSON.parse(bytes.toString(crypto.enc.Utf8));
         const birthday_info = await Mansedata.findOne({
-            where: { no: req.params.queryDate }
+            where: { no: decryptedDate } // birthday
         });
         let my_year_e_org = birthday_info?.year_e;
         let my_month_e_org = birthday_info?.month_e;
