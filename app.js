@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 
 const todayRouter = require('./routes/today');
 const lifetimeRouter = require('./routes/lifetime');
+const lifeInterpretingRouter = require('./routes/lifeInterpreting');
 
 dotenv.config();
 
@@ -67,6 +68,7 @@ app.get('/', (req, res) => {
 
 app.use('/today', todayRouter);
 app.use('/lifetime', lifetimeRouter);
+app.use('/lifeInterpreting', lifeInterpretingRouter);
 
 app.listen(3065, () => {
     console.log('-- SAJU API is listening on http://localhost:3065 --');

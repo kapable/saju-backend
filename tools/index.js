@@ -164,10 +164,196 @@ const save_wealth_logic = (request_month, request_day) => {
     return serial_no;
 }
 
+const mid_life_converter = (month_e, year_e) => {
+    let total_02 = "";
+
+    if(((month_e == "01") && (year_e == "11")) || 
+    (( month_e == "12") && ( year_e == "12")) || 
+    (( month_e == "11") && ( year_e == "01")) || 
+    (( month_e == "10") && ( year_e == "02")) || 
+    (( month_e == "09") && ( year_e == "03")) || 
+    (( month_e == "08") && ( year_e == "04")) || 
+    (( month_e == "07") && ( year_e == "05"))|| 
+    (( month_e == "06") && ( year_e == "06"))|| 
+    (( month_e == "05") && ( year_e == "07"))|| 
+    (( month_e == "04") && ( year_e == "08"))|| 
+    (( month_e == "03") && ( year_e == "09"))|| 
+    (( month_e == "02") && ( year_e == "10")))   
+    {
+	    return total_02 = "11"  ;
+    }
+    else if(((month_e == "02") && (year_e == "11")) || 
+    (( month_e == "01") && ( year_e == "12")) || 
+    (( month_e == "12") && ( year_e == "01")) || 
+    (( month_e == "11") && ( year_e == "02")) || 
+    (( month_e == "10") && ( year_e == "03")) || 
+    (( month_e == "09") && ( year_e == "04")) || 
+    (( month_e == "08") && ( year_e == "05"))|| 
+    (( month_e == "07") && ( year_e == "06"))|| 
+    (( month_e == "06") && ( year_e == "07"))|| 
+    (( month_e == "05") && ( year_e == "08"))|| 
+    (( month_e == "04") && ( year_e == "09"))|| 
+    (( month_e == "03") && ( year_e == "10")))   
+    {
+	    return total_02 = "12"  ;
+    }
+    else if(((month_e == "03") && (year_e == "11")) || 
+    (( month_e == "02") && ( year_e == "12")) || 
+    (( month_e == "01") && ( year_e == "01")) || 
+    (( month_e == "12") && ( year_e == "02")) || 
+    (( month_e == "11") && ( year_e == "03")) || 
+    (( month_e == "10") && ( year_e == "04")) || 
+    (( month_e == "09") && ( year_e == "05"))|| 
+    (( month_e == "08") && ( year_e == "06"))|| 
+    (( month_e == "07") && ( year_e == "07"))|| 
+    (( month_e == "06") && ( year_e == "08"))|| 
+    (( month_e == "05") && ( year_e == "09"))|| 
+    (( month_e == "04") && ( year_e == "10")))   
+    {
+	    return total_02 = "01"  ;
+    }
+    else if(((month_e == "04") && (year_e == "11")) || 
+    (( month_e == "03") && ( year_e == "12")) || 
+    (( month_e == "02") && ( year_e == "01")) || 
+    (( month_e == "01") && ( year_e == "02")) || 
+    (( month_e == "12") && ( year_e == "03")) || 
+    (( month_e == "11") && ( year_e == "04")) || 
+    (( month_e == "10") && ( year_e == "05"))|| 
+    (( month_e == "09") && ( year_e == "06"))|| 
+    (( month_e == "08") && ( year_e == "07"))|| 
+    (( month_e == "07") && ( year_e == "08"))|| 
+    (( month_e == "06") && ( year_e == "09"))|| 
+    (( month_e == "05") && ( year_e == "10")))   
+    {
+	    return total_02 = "02"  ;
+    }
+    else if(((month_e == "05") && (year_e == "11")) ||
+    (( month_e == "04") && ( year_e == "12")) || 
+    (( month_e == "03") && ( year_e == "01")) || 
+    (( month_e == "02") && ( year_e == "02")) || 
+    (( month_e == "01") && ( year_e == "03")) || 
+    (( month_e == "12") && ( year_e == "04")) || 
+    (( month_e == "11") && ( year_e == "05"))|| 
+    (( month_e == "10") && ( year_e == "06"))|| 
+    (( month_e == "09") && ( year_e == "07"))|| 
+    (( month_e == "08") && ( year_e == "08"))|| 
+    (( month_e == "07") && ( year_e == "09"))|| 
+    (( month_e == "06") && ( year_e == "10")))   
+    {
+	    return total_02 = "03"  ;
+    }
+    else if(((month_e == "06") && (year_e == "11")) || 
+    (( month_e == "05") && ( year_e == "12")) || 
+    (( month_e == "04") && ( year_e == "01")) || 
+    (( month_e == "03") && ( year_e == "02")) || 
+    (( month_e == "02") && ( year_e == "03")) || 
+    (( month_e == "01") && ( year_e == "04")) || 
+    (( month_e == "12") && ( year_e == "05"))|| 
+    (( month_e == "11") && ( year_e == "06"))|| 
+    (( month_e == "10") && ( year_e == "07"))|| 
+    (( month_e == "09") && ( year_e == "08"))|| 
+    (( month_e == "08") && ( year_e == "09"))|| 
+    (( month_e == "07") && ( year_e == "10")))   
+    {
+	    return total_02 = "04"  ;
+    }
+    else if(((month_e == "07") && (year_e == "11")) || 
+    (( month_e == "06") && ( year_e == "12")) || 
+    (( month_e == "05") && ( year_e == "01")) || 
+    (( month_e == "04") && ( year_e == "02")) || 
+    (( month_e == "03") && ( year_e == "03")) || 
+    (( month_e == "02") && ( year_e == "04")) ||
+    (( month_e == "01") && ( year_e == "05"))|| 
+    (( month_e == "12") && ( year_e == "06"))|| 
+    (( month_e == "11") && ( year_e == "07"))|| 
+    (( month_e == "10") && ( year_e == "08"))|| 
+    (( month_e == "09") && ( year_e == "09"))|| 
+    (( month_e == "08") && ( year_e == "10")))   
+    {
+	    return total_02 = "05"  ;
+    }
+    else if(((month_e == "08") && (year_e == "11")) || 
+    (( month_e == "07") && ( year_e == "12")) || 
+    (( month_e == "06") && ( year_e == "01")) || 
+    (( month_e == "05") && ( year_e == "02")) || 
+    (( month_e == "04") && ( year_e == "03")) || 
+    (( month_e == "03") && ( year_e == "04")) || 
+    (( month_e == "02") && ( year_e == "05"))|| 
+    (( month_e == "01") && ( year_e == "06"))|| 
+    (( month_e == "12") && ( year_e == "07"))|| 
+    (( month_e == "11") && ( year_e == "08"))|| 
+    (( month_e == "10") && ( year_e == "09"))|| 
+    (( month_e == "09") && ( year_e == "10")))  
+    {
+	    return total_02 = "06"  ;
+    }
+    else if(((month_e == "09") && (year_e == "11")) || 
+    (( month_e == "08") && ( year_e == "12")) || 
+    (( month_e == "07") && ( year_e == "01")) || 
+    (( month_e == "06") && ( year_e == "02")) || 
+    (( month_e == "05") && ( year_e == "03")) || 
+    (( month_e == "04") && ( year_e == "04")) || 
+    (( month_e == "03") && ( year_e == "05"))|| 
+    (( month_e == "02") && ( year_e == "06"))|| 
+    (( month_e == "01") && ( year_e == "07"))|| 
+    (( month_e == "12") && ( year_e == "08"))|| 
+    (( month_e == "11") && ( year_e == "09"))|| 
+    (( month_e == "10") && ( year_e == "10")))   
+    {
+	    return total_02 = "07"  ;
+    }
+    else if(((month_e == "10") && (year_e == "11")) || 
+    (( month_e == "09") && ( year_e == "12")) || 
+    (( month_e == "08") && ( year_e == "01")) || 
+    (( month_e == "07") && ( year_e == "02")) || 
+    (( month_e == "06") && ( year_e == "03")) || 
+    (( month_e == "05") && ( year_e == "04")) || 
+    (( month_e == "04") && ( year_e == "05"))|| 
+    (( month_e == "03") && ( year_e == "06"))|| 
+    (( month_e == "02") && ( year_e == "07"))|| 
+    (( month_e == "01") && ( year_e == "08"))|| 
+    (( month_e == "12") && ( year_e == "09"))|| 
+    (( month_e == "11") && ( year_e == "10")))   
+    {
+	    return total_02 = "08"  ;
+    }
+    else if(((month_e == "11") && (year_e == "11")) || 
+    (( month_e == "10") && ( year_e == "12")) || 
+    (( month_e == "09") && ( year_e == "01")) || 
+    (( month_e == "08") && ( year_e == "02")) || 
+    (( month_e == "07") && ( year_e == "03")) || 
+    (( month_e == "06") && ( year_e == "04")) || 
+    (( month_e == "05") && ( year_e == "05"))|| 
+    (( month_e == "04") && ( year_e == "06"))|| 
+    (( month_e == "03") && ( year_e == "07"))|| 
+    (( month_e == "02") && ( year_e == "08"))|| 
+    (( month_e == "01") && ( year_e == "09"))|| 
+    (( month_e == "12") && ( year_e == "10")))   
+    {
+	    return total_02 = "09"  ;
+    }
+    else if(((month_e == "12") && (year_e == "11")) || 
+    (( month_e == "11") && ( year_e == "12")) || 
+    (( month_e == "10") && ( year_e == "01")) || 
+    (( month_e == "09") && ( year_e == "02")) || 
+    (( month_e == "08") && ( year_e == "03")) || 
+    (( month_e == "07") && ( year_e == "04")) || 
+    (( month_e == "06") && ( year_e == "05"))|| 
+    (( month_e == "05") && ( year_e == "06"))|| 
+    (( month_e == "04") && ( year_e == "07"))|| 
+    (( month_e == "03") && ( year_e == "08"))|| 
+    (( month_e == "02") && ( year_e == "09"))|| 
+    (( month_e == "01") && ( year_e == "10")))   
+    {
+	    return total_02 = "10"  ;
+    }
+}
+
 module.exports = {
     gabja_alphabet_converter,
     gabja_number_converter,
     F_re_yukchin,
     F_mb_sibsin,
     save_wealth_logic,
+    mid_life_converter,
 };
