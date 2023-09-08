@@ -27,7 +27,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 if (process.env.NODE_ENV === 'production') {
     app.use(cors({
-        // origin: [process.env.SERVICE_FRONT_URL, process.env.SERVICE_FRONT_URL2],
+        origin: ['https://ktestone.com'],
         credentials: true,
         optionsSuccessStatus: 200
     }));
